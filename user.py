@@ -23,7 +23,7 @@ class User:
         Возвращает строку с информацией о пользователе и его задачах.
         :return: Строка с информацией о пользователе и списке его задач.
         """
-        info = f"Пользователь: {self.name}\n{" "*5}Задачи:\n"
+        info = f"Пользователь: {self.name}\n     Задачи:\n"
         for task in self.tasks:
             info += task.get_info()
         return info
