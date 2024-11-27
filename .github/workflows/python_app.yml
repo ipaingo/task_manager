@@ -46,3 +46,8 @@ jobs:
           coverage run -m unittest test_task_manager/test_user.py
           coverage run -m unittest test_task_manager/test_task.py
           coverage report
+      - name: Upload coverage to Coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: coveralls
