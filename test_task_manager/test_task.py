@@ -1,3 +1,4 @@
+
 import unittest
 from task import Task
 
@@ -19,14 +20,31 @@ class TestTask(unittest.TestCase):
         self.task.update_status("In Progress")
         self.assertEqual(self.task.status, "In Progress")
 
+    def test_update_description(self):
+        """Тест обновления описания задачи."""
+        self.task.update_description("Описание 2")
+        self.assertEqual(self.task.description, "Описание 2")
+
+    def test_update_location(self):
+        """Тест обновления местоположения задачи"""
+        self.task.update_location("Дом")
+        self.assertEqual(self.task.location, "Дом")
+
     def test_update_time_valid(self):
         """Тест обновления времени на корректное значение."""
-        self.task.update_time("13:00-14:00")
-        self.assertEqual(self.task.time, "13:00-14:00")
+        self.task.update_time("10:00-11:00")
+        self.assertEqual(self.task.time, "10:00-11:00")
 
     def test_update_time_invalid(self):
         """Тест обновления времени на некорректное значение."""
-        self.assertFalse(self.task.is_valid_time("14:00-13:00"))
+        self.assertTrue(self.task.is_valid_time("Не указано"))
+        self.assertFalse(self.task.is_valid_time("10:00;11:00"))
+        self.assertFalse(self.task.is_valid_time("10:00-11;00"))
+        self.assertFalse(self.task.is_valid_time("123:00-11:00"))
+        self.assertFalse(self.task.is_valid_time("10:00-11:456"))
+        self.assertFalse(self.task.is_valid_time("аа:бб-вв:гг"))
+        self.assertFalse(self.task.is_valid_time("10:60-25:00"))
+        self.assertTrue(self.task.is_valid_time("10:00-11:00"))
 
     def test_update_all(self):
         """Тест обновления всех параметров задачи."""
