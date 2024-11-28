@@ -53,7 +53,3 @@ class TestTask(unittest.TestCase):
         self.assertEqual(self.task.description, "New Description")
         self.assertEqual(self.task.time, "15:00-16:00")
         self.assertEqual(self.task.location, "Home")
-
-
-if __name__ == "__main__":
-    unittest.main()
