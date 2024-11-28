@@ -1,3 +1,7 @@
+from tokenize import endpats
+from turtledemo.penrose import start
+
+
 class Task:
     def __init__(self, title, description, status="To Do", time="Не указано", location="Не указано"):
         """
