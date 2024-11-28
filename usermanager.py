@@ -35,6 +35,8 @@ def remove_user(name):
 def get_userlist():
     if not users:
         print("Список пользователей пуст.")
+        return False
     else:
         for user in users:
             print(f"\n{'=' * 20}\n{user.get_info()}")
+            return True
