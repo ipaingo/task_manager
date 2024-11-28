@@ -25,3 +25,29 @@ class TestUserManager(unittest.TestCase):
         """Тест поиска с учётом регистра."""
         user = find_user("анна")
         self.assertIsNone(user)
+
+    def test_add_user(self):
+        """Тест добавления нового пользователя."""
+        add_user("Сергей")
+        self.assertEqual(len(users), 3)
+
+    def test_add_duplicate_user(self):
+        add_user("Анна")
+        self.assertEqual(len(users), 2)
+
+    def test_remove_user(self):
+        """Тест удаления пользователя."""
+        remove_user("Иван")
+        self.assertNotIn("Иван", users)
+        self.assertEqual(len(users), 1)
+
+    def test_remove_user_unknown(self):
+        remove_user("Сергей")
+        self.assertEqual(len(users), 2)
+
+    def test_get_userlist(self):
+        self.assertTrue(get_userlist())
+
+    def test_get_empty_userlist(self):
+        users.clear()
+        self.assertFalse(get_userlist())
