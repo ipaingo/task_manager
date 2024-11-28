@@ -1,36 +1,46 @@
-from user import User
+from usermanager import *
 from task import Task
 
-users = []
+def main():
+    while True:
+        print("\nTask Manager")
+        print("1. Добавить пользователя")
+        print("2. Удалить пользователя")
+        print("3. Создать задачу")
+        print("4. Обновить задачу")
+        print("5. Удалить задачу")
+        print("6. Вывести список пользователей и задач")
+        print("7. Выход")
 
-def find_user(name):
-    """
-    Найти пользователя по имени.
-    :param name: Имя пользователя.
-    :return: Объект пользователя или None, если не найден.
-    """
-    for user in users:
-        if user.name == name:
-            return user
-    return None
-
-# Добавление пользователя
-def add_user(name):
-    if find_user(name):
-        print("Пользователь с таким именем уже существует.")
-    else:
-        user = User(name)
-        users.append(user)
-        print(f"Пользователь {name} добавлен.")
-
-# Удаление пользователя
-def remove_user(name):
-    user = find_user(name)
-    if user:
-        users.remove(user)
-        print(f"Пользователь \"{name}\" успешно удалён.")
-    else:
-        print("Пользователь с таким именем не найден.")
+        choice = input("Выберите действие: ")
+        if choice == "1":
+            # Добавление пользователя
+            name = input("Введите имя пользователя: ")
+            add_user(name)
+        elif choice == "2":
+            # Удаление пользователя
+            name = input("Введите имя пользователя, которого хотите удалить: ")
+            remove_user(name)
+        elif choice == "3":
+            # Добавление задачи
+            name = input("Введите имя пользователя, которому будет назначена задача: ")
+            add_task(name)
+        elif choice == "4":
+            # Обновление задачи
+            name = input("Введите имя пользователя, задачу которого хотите обновить: ")
+            update_task(name)
+        elif choice == "5":
+            # Удаление задачи
+            name = input("Введите имя пользователя, задачу которого хотите удалить: ")
+            remove_task(name)
+        elif choice == "6":
+            # Вывод списка пользователей и задач
+            get_userlist()
+        elif choice == "7":
+            print("Выход из программы.")
+            break
+        else:
+            print("Некорректный выбор. Попробуйте снова.")
 
 # Добавление задачи
 def add_task(name):
@@ -133,56 +143,6 @@ def remove_task(name):
             print("Некорректный ввод.")
     else:
         print("Пользователь с таким именем не найден.")
-
-
-# Вывод списка пользователей и задач
-def get_userlist():
-    if not users:
-        print("Список пользователей пуст.")
-    else:
-        for user in users:
-            print(f"\n{'=' * 20}\n{user.get_info()}")
-
-def main():
-    while True:
-        print("\nTask Manager")
-        print("1. Добавить пользователя")
-        print("2. Удалить пользователя")
-        print("3. Создать задачу")
-        print("4. Обновить задачу")
-        print("5. Удалить задачу")
-        print("6. Вывести список пользователей и задач")
-        print("7. Выход")
-
-        choice = input("Выберите действие: ")
-        if choice == "1":
-            # Добавление пользователя
-            name = input("Введите имя пользователя: ")
-            add_user(name)
-        elif choice == "2":
-            # Удаление пользователя
-            name = input("Введите имя пользователя, которого хотите удалить: ")
-            remove_user(name)
-        elif choice == "3":
-            # Добавление задачи
-            name = input("Введите имя пользователя, которому будет назначена задача: ")
-            add_task(name)
-        elif choice == "4":
-            # Обновление задачи
-            name = input("Введите имя пользователя, задачу которого хотите обновить: ")
-            update_task(name)
-        elif choice == "5":
-            # Удаление задачи
-            name = input("Введите имя пользователя, задачу которого хотите удалить: ")
-            remove_task(name)
-        elif choice == "6":
-            # Вывод списка пользователей и задач
-            get_userlist()
-        elif choice == "7":
-            print("Выход из программы.")
-            break
-        else:
-            print("Некорректный выбор. Попробуйте снова.")
 
 
 if __name__ == "__main__":
