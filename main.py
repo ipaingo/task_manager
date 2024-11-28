@@ -1,4 +1,4 @@
-from usermanager import *
+from usermanager import find_user, add_user, remove_user, get_userlist
 from task import Task
 
 def main():
