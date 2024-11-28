@@ -5,13 +5,13 @@ class TestTask(unittest.TestCase):
 
     def setUp(self):
         """Подготовка данных перед каждым тестом."""
-        self.task = Task("Task1", "Description1", time="10:00-12:00", location="Office")
+        self.task = Task("Задача 1", "Описание 1", time="10:00-12:00", location="Офис")
 
     def test_get_info(self):
         """Тест получения информации о задаче."""
         info = self.task.get_info()
-        self.assertIn("Task1", info)
-        self.assertIn("Description1", info)
+        self.assertIn("Задача 1", info)
+        self.assertIn("Описание 1", info)
         self.assertIn("10:00-12:00", info)
 
     def test_update_status(self):
