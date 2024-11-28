@@ -45,6 +45,8 @@ jobs:
           coverage run -m unittest test_task_manager/test_main.py
           coverage run -m unittest test_task_manager/test_user.py
           coverage run -m unittest test_task_manager/test_task.py
+          coverage run -m unittest test_task_manager/test_integration.py
+          coverage run -m unittest test_task_manager/test_acceptance.py
           coverage report
       - name: Upload coverage to Coveralls
         env:
