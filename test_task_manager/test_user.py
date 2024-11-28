@@ -6,9 +6,9 @@ class TestUser(unittest.TestCase):
 
     def setUp(self):
         """Подготовка данных перед каждым тестом."""
-        self.user = User("Alice")
-        self.task1 = Task("Task1", "Description1")
-        self.task2 = Task("Task2", "Description2")
+        self.user = User("Анна")
+        self.task1 = Task("Задача 1", "Описание 1")
+        self.task2 = Task("Задача 2", "Описание 2")
 
     def test_add_task(self):
         """Тест добавления задачи пользователю."""
@@ -25,13 +25,13 @@ class TestUser(unittest.TestCase):
         """Тест получения информации о пользователе и его задачах."""
         self.user.add_task(self.task1)
         info = self.user.get_info()
-        self.assertIn("Alice", info)
-        self.assertIn("Task1", info)
+        self.assertIn("Анна", info)
+        self.assertIn("Задача 1", info)
 
     def test_remove_task(self):
         """Тест удаления задачи по названию."""
         self.user.add_task(self.task1)
-        self.user.remove_task("Task1")
+        self.user.remove_task("Задача 1")
         self.assertNotIn(self.task1, self.user.tasks)
 
     def test_remove_non_existing_task(self):
