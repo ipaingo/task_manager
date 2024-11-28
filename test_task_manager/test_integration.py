@@ -38,11 +38,11 @@ class TestIntegration(unittest.TestCase):
 
     def test_update_task_info(self):
         """Проверка обновления информации о задаче."""
-        add_user("Diana")
-        user = find_user("Diana")
-        task = Task("Task2", "Initial description")
+        add_user("Диана")
+        user = find_user("Диана")
+        task = Task("Новая задача", "Описание")
         user.add_task(task)
-        task.update_status("In Progress")
-        task.update_description("Updated description")
-        self.assertEqual(task.status, "In Progress", "Статус задачи должен обновиться.")
-        self.assertEqual(task.description, "Updated description", "Описание задачи должно обновиться.")
+        task.update_status("Выполняется")
+        task.update_description("Обновлённое описание")
+        self.assertEqual(task.status, "Выполняется")
+        self.assertEqual(task.description, "Обновлённое описание")
