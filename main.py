@@ -33,7 +33,7 @@ def remove_user(name):
         print("Пользователь с таким именем не найден.")
 
 # Добавление задачи
-def create_task(name):
+def add_task(name):
     user = find_user(name)
     if user:
         title = input("Введите название задачи: ")
@@ -166,7 +166,7 @@ def main():
         elif choice == "3":
             # Добавление задачи
             name = input("Введите имя пользователя, которому будет назначена задача: ")
-            create_task(name)
+            add_task(name)
         elif choice == "4":
             # Обновление задачи
             name = input("Введите имя пользователя, задачу которого хотите обновить: ")
