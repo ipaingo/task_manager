@@ -1,4 +1,3 @@
-
 import unittest
 from task import Task
 
@@ -44,6 +43,8 @@ class TestTask(unittest.TestCase):
         self.assertFalse(self.task.is_valid_time("10:00-11:456"))
         self.assertFalse(self.task.is_valid_time("аа:бб-вв:гг"))
         self.assertFalse(self.task.is_valid_time("10:60-25:00"))
+        self.assertFalse(self.task.is_valid_time("10:00-25:00"))
+        self.assertFalse(self.task.is_valid_time("11:00-10:00"))
         self.assertTrue(self.task.is_valid_time("10:00-11:00"))
 
     def test_update_all(self):
