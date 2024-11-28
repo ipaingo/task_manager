@@ -38,7 +38,3 @@ class TestUser(unittest.TestCase):
         """Тест удаления несуществующей задачи."""
         result = self.user.remove_task("NonExistingTask")
         self.assertFalse(result)
-
-
-if __name__ == "__main__":
-    unittest.main()
