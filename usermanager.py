@@ -15,6 +15,9 @@ def find_user(name):
 
 # Добавление пользователя
 def add_user(name):
+    if not name.strip():  # Проверка на пустую строку или пробелы
+        print("Имя пользователя не может быть пустым.")
+        return
     if find_user(name):
         print("Пользователь с таким именем уже существует.")
     else:
