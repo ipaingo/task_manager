@@ -117,7 +117,7 @@ def update_task(name):
         except ValueError:
             print("Некорректный ввод.")
     else:
-        print("Пользователь с таким именем не найден.")
+        print("Пользователь не найден.")
 
 # Удаление задачи
 def remove_task(name):
