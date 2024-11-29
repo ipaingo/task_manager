@@ -31,6 +31,10 @@ class TestUserManager(unittest.TestCase):
         add_user("Сергей")
         self.assertEqual(len(users), 3)
 
+    def test_add_empty_user(self):
+        add_user("    ")
+        self.assertEqual(len(users), 2)
+
     def test_add_duplicate_user(self):
         add_user("Анна")
         self.assertEqual(len(users), 2)
