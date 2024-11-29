@@ -1,9 +1,7 @@
-from tokenize import endpats
-from turtledemo.penrose import start
-
-
 class Task:
-    def __init__(self, title, description, status="To Do", time="Не указано", location="Не указано"):
+    NOT_SPECIFIED = "Не указано"
+
+    def __init__(self, title, description, status="To Do", time=NOT_SPECIFIED, location=NOT_SPECIFIED):
         """
         Инициализация задачи.
         :param title: Название задачи.
@@ -30,6 +28,7 @@ class Task:
         Обновить статус задачи.
         :param status: Новый статус.
         """
+
         self.status = status
 
     def update_description(self, description):
@@ -72,7 +71,7 @@ class Task:
         :param time: Строка времени.
         :return: True, если формат времени корректен, иначе False.
         """
-        if time == "Не указано":
+        if time == Task.NOT_SPECIFIED:
             return True
 
         # Проверить разделитель '-'
