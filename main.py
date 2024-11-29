@@ -46,8 +46,20 @@ def main():
 def add_task(name):
     user = find_user(name)
     if user:
-        title = input("Введите название задачи: ")
-        description = input("Введите описание задачи: ")
+        while True:
+            title = input("Введите название задачи: ").strip()
+            if not title:
+                print("Название задачи не может быть пустым. Попробуйте снова.")
+            else:
+                break
+
+        while True:
+            description = input("Введите описание задачи: ").strip()
+            if not description:
+                print("Описание задачи не может быть пустым. Попробуйте снова.")
+            else:
+                break
+
         # Проверка корректности времени
         while True:
             time = input("Введите время выполнения задачи (HH:MM-HH:MM) или оставьте пустым: ") or "Не указано"
