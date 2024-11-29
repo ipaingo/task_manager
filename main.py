@@ -61,7 +61,6 @@ def add_task(name):
         location = input("Введите место выполнения задачи или оставьте пустым: ") or "Не указано"
         task = Task(title, description, time=time, location=location)
         user.add_task(task)
-        print(f"Задача \"{title}\" добавлена пользователю {name}.")
     else:
         print("Пользователь с таким именем не найден.")
 
