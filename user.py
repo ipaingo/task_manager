@@ -17,6 +17,7 @@ class User:
             print(f"Задача с названием '{task.title}' уже существует и не может быть добавлена.")
         else:
             self.tasks.append(task)
+            print(f"Задача \"{task.title}\" добавлена пользователю {self.name}.")
 
     def get_info(self):
         """
@@ -34,7 +35,7 @@ class User:
         :param title: Название задачи, которую нужно удалить.
         :return: True, если задача была удалена, False, если задача с таким названием не найдена.
         """
-        task = self._find_task_by_title(title)
+        task = self.find_task_by_title(title)
         if task:
             self.tasks.remove(task)
             print(f"Задача '{title}' успешно удалена.")
@@ -43,7 +44,7 @@ class User:
         return False
 
     # Защищенные методы
-    def _find_task_by_title(self, title):
+    def find_task_by_title(self, title):
         """
         Находит задачу по названию.
         :param title: Название задачи.
