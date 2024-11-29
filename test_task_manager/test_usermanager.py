@@ -1,5 +1,6 @@
 import unittest
-from usermanager import *
+from usermanager import users, find_user, add_user, remove_user, get_userlist
+from user import User
 
 class TestUserManager(unittest.TestCase):
     def setUp(self):
