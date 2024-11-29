@@ -1,6 +1,7 @@
 from usermanager import find_user, add_user, remove_user, get_userlist
 from task import Task
 
+
 def main():
     while True:
         print("\nTask Manager")
@@ -46,19 +47,8 @@ def main():
 def add_task(name):
     user = find_user(name)
     if user:
-        while True:
-            title = input("Введите название задачи: ").strip()
-            if not title:
-                print("Название задачи не может быть пустым. Попробуйте снова.")
-            else:
-                break
-
-        while True:
-            description = input("Введите описание задачи: ").strip()
-            if not description:
-                print("Описание задачи не может быть пустым. Попробуйте снова.")
-            else:
-                break
+        title = get_non_empty_input("Введите название задачи: ")
+        description = get_non_empty_input("Введите описание задачи: ")
 
         # Проверка корректности времени
         while True:
@@ -74,6 +64,20 @@ def add_task(name):
         print(f"Задача \"{title}\" добавлена пользователю {name}.")
     else:
         print("Пользователь с таким именем не найден.")
+
+# Функция для получения непустого ввода
+def get_non_empty_input(prompt):
+    """
+    Запрашивает у пользователя ввод с проверкой на непустую строку.
+    :param prompt: Сообщение для пользователя.
+    :return: Введённая пользователем строка.
+    """
+    while True:
+        value = input(prompt).strip()
+        if not value:
+            print("Ввод не может быть пустым. Попробуйте снова.")
+        else:
+            return value
 
 # Обновление задачи
 def update_task(name):
