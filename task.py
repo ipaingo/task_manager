@@ -90,9 +90,7 @@ class Task:
         end_hours, end_minutes = end_time.split(':')[0], end_time.split(':')[1]
 
         # Проверить длину элементов
-        if len(start_hours) < 1 or len(start_hours) > 2 or len(end_hours) < 1 or len(end_hours) > 2:
-            return False
-        if len(start_minutes) != 2 or len(end_minutes) != 2:
+        if len(start_hours) < 1 or len(start_hours) > 2 or len(end_hours) < 1 or len(end_hours) > 2 or len(start_minutes) != 2 or len(end_minutes) != 2:
             return False
 
         # Проверить, что время является числовым значением
@@ -105,9 +103,7 @@ class Task:
         end_minutes = int(end_minutes)
 
         # Проверить диапазоны значений
-        if not (0 <= start_hours <= 23 and 0 <= start_minutes <= 59):
-            return False
-        if not (0 <= end_hours <= 23 and 0 <= end_minutes <= 59):
+        if not (0 <= start_hours <= 23 and 0 <= start_minutes <= 59 and 0 <= end_hours <= 23 and 0 <= end_minutes <= 59):
             return False
 
         # Убедиться, что время начала меньше времени окончания
