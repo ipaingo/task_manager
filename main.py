@@ -1,4 +1,4 @@
-from usermanager import find_user, add_user, remove_user, get_userlist
+]from usermanager import find_user, add_user, remove_user, get_userlist
 from task import Task
 
 
@@ -16,23 +16,23 @@ def main():
         choice = input("Выберите действие: ")
         if choice == "1":
             # Добавление пользователя
-            name = input("Введите имя пользователя: ")
+            name = get_non_empty_input("Введите имя пользователя: ")
             add_user(name)
         elif choice == "2":
             # Удаление пользователя
-            name = input("Введите имя пользователя, которого хотите удалить: ")
+            name = get_non_empty_input("Введите имя пользователя, которого хотите удалить: ")
             remove_user(name)
         elif choice == "3":
             # Добавление задачи
-            name = input("Введите имя пользователя, которому будет назначена задача: ")
+            name = get_non_empty_input("Введите имя пользователя, которому будет назначена задача: ")
             add_task(name)
         elif choice == "4":
             # Обновление задачи
-            name = input("Введите имя пользователя, задачу которого хотите обновить: ")
+            name = get_non_empty_input("Введите имя пользователя, задачу которого хотите обновить: ")
             update_task(name)
         elif choice == "5":
             # Удаление задачи
-            name = input("Введите имя пользователя, задачу которого хотите удалить: ")
+            name = get_non_empty_input("Введите имя пользователя, задачу которого хотите удалить: ")
             remove_task(name)
         elif choice == "6":
             # Вывод списка пользователей и задач
@@ -86,9 +86,7 @@ def update_task(name):
             print("У пользователя нет задач.")
             return
 
-        print("Список задач:")
-        for i, task in enumerate(user.tasks, start=1):
-            print(f"{i}. {task.title} - {task.status}")
+        show_brief_task_list(user)
 
         try:
             task_index = int(input("Введите номер задачи для обновления: ")) - 1
@@ -103,26 +101,26 @@ def update_task(name):
                 update_choice = input("Выберите действие: ")
 
                 if update_choice == "1":
-                    new_status = input("Введите новый статус задачи: ")
+                    new_status = get_non_empty_input("Введите новый статус задачи: ")
                     task.update_status(new_status)
                     print("Статус задачи обновлен.")
                 elif update_choice == "2":
-                    new_description = input("Введите новое описание задачи: ")
+                    new_description = get_non_empty_input("Введите новое описание задачи: ")
                     task.update_description(new_description)
                     print("Описание задачи обновлено.")
                 elif update_choice == "3":
-                    new_time = input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
+                    new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
                     task.update_time(new_time)
                     print("Время выполнения задачи обновлено.")
                 elif update_choice == "4":
-                    new_location = input("Введите новое место выполнения задачи: ")
+                    new_location = get_non_empty_input("Введите новое место выполнения задачи: ")
                     task.update_location(new_location)
                     print("Местоположение задачи обновлено.")
                 elif update_choice == "5":
-                    new_status = input("Введите новый статус задачи: ")
-                    new_description = input("Введите новое описание задачи: ")
-                    new_time = input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
-                    new_location = input("Введите новое место выполнения задачи: ")
+                    new_status = get_non_empty_input("Введите новый статус задачи: ")
+                    new_description = get_non_empty_input("Введите новое описание задачи: ")
+                    new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
+                    new_location = get_non_empty_input("Введите новое место выполнения задачи: ")
                     task.update_all(new_status, new_description, new_time, new_location)
                     print("Все параметры задачи обновлены.")
                 else:
@@ -133,6 +131,11 @@ def update_task(name):
             print("Некорректный ввод.")
     else:
         print("Пользователь не найден.")
+
+def show_brief_task_list(user):
+    print("Список задач:")
+    for i, task in enumerate(user.tasks, start=1):
+        print(f"{i}. {task.title} - {task.status}")
 
 # Удаление задачи
 def remove_task(name):
