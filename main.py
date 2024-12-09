@@ -99,38 +99,40 @@ def update_task(name):
                 print("4. Местоположение")
                 print("5. Все параметры")
                 update_choice = input("Выберите действие: ")
-
-                if update_choice == "1":
-                    new_status = get_non_empty_input("Введите новый статус задачи: ")
-                    task.update_status(new_status)
-                    print("Статус задачи обновлен.")
-                elif update_choice == "2":
-                    new_description = get_non_empty_input("Введите новое описание задачи: ")
-                    task.update_description(new_description)
-                    print("Описание задачи обновлено.")
-                elif update_choice == "3":
-                    new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
-                    task.update_time(new_time)
-                    print("Время выполнения задачи обновлено.")
-                elif update_choice == "4":
-                    new_location = get_non_empty_input("Введите новое место выполнения задачи: ")
-                    task.update_location(new_location)
-                    print("Местоположение задачи обновлено.")
-                elif update_choice == "5":
-                    new_status = get_non_empty_input("Введите новый статус задачи: ")
-                    new_description = get_non_empty_input("Введите новое описание задачи: ")
-                    new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
-                    new_location = get_non_empty_input("Введите новое место выполнения задачи: ")
-                    task.update_all(new_status, new_description, new_time, new_location)
-                    print("Все параметры задачи обновлены.")
-                else:
-                    print("Некорректный выбор.")
+                execute_user_choise(task, update_choice)
             else:
                 print("Некорректный номер задачи.")
         except ValueError:
             print("Некорректный ввод.")
     else:
         print("Пользователь не найден.")
+
+def execute_user_choise(task, update_choice):
+    if update_choice == "1":
+        new_status = get_non_empty_input("Введите новый статус задачи: ")
+        task.update_status(new_status)
+        print("Статус задачи обновлен.")
+    elif update_choice == "2":
+        new_description = get_non_empty_input("Введите новое описание задачи: ")
+        task.update_description(new_description)
+        print("Описание задачи обновлено.")
+    elif update_choice == "3":
+        new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
+        task.update_time(new_time)
+        print("Время выполнения задачи обновлено.")
+    elif update_choice == "4":
+        new_location = get_non_empty_input("Введите новое место выполнения задачи: ")
+        task.update_location(new_location)
+        print("Местоположение задачи обновлено.")
+    elif update_choice == "5":
+        new_status = get_non_empty_input("Введите новый статус задачи: ")
+        new_description = get_non_empty_input("Введите новое описание задачи: ")
+        new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
+        new_location = get_non_empty_input("Введите новое место выполнения задачи: ")
+        task.update_all(new_status, new_description, new_time, new_location)
+        print("Все параметры задачи обновлены.")
+    else:
+        print("Некорректный выбор.")
 
 def show_brief_task_list(user):
     print("Список задач:")
