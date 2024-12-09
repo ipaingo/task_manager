@@ -99,7 +99,7 @@ def update_task(name):
                 print("4. Местоположение")
                 print("5. Все параметры")
                 update_choice = input("Выберите действие: ")
-                execute_user_choise(task, update_choice)
+                execute_user_choiсe(task, update_choice)
             else:
                 print("Некорректный номер задачи.")
         except ValueError:
@@ -107,7 +107,7 @@ def update_task(name):
     else:
         print("Пользователь не найден.")
 
-def execute_user_choise(task, update_choice):
+def execute_user_choiсe(task, update_choice):
     if update_choice == "1":
         new_status = get_non_empty_input("Введите новый статус задачи: ")
         task.update_status(new_status)
