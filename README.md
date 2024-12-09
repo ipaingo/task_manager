@@ -1,3 +1,4 @@
+[![Python tests](https://github.com/ipaingo/task_manager/actions/workflows/python_app.yml/badge.svg)](https://github.com/ipaingo/task_manager/actions/workflows/python_app.yml)
 [![Coverage Status](https://coveralls.io/repos/github/ipaingo/task_manager/badge.svg?branch=main)](https://coveralls.io/github/ipaingo/task_manager?branch=main)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ipaingo_task_manager&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ipaingo_task_manager)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ipaingo_task_manager&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ipaingo_task_manager)
