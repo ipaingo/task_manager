@@ -32,12 +32,13 @@ class TestTask(unittest.TestCase):
 
     def test_update_time_valid(self):
         """Тест обновления времени на корректное значение."""
+        self.assertTrue(self.task.update_time("Не указано"))
+        self.assertEqual(self.task.time, "Не указано")
         self.assertTrue(self.task.update_time("10:00-11:00"))
         self.assertEqual(self.task.time, "10:00-11:00")
 
     def test_update_time_invalid(self):
         """Тест обновления времени на некорректное значение."""
-        self.assertTrue(self.task.update_time("Не указано"))
         self.assertFalse(self.task.update_time("11:00-10:00"))
         self.assertFalse(self.task.update_time("10:00;11:00"))
         self.assertFalse(self.task.update_time("10:00-11;00"))
