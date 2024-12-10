@@ -1,6 +1,9 @@
 from usermanager import find_user, add_user, remove_user, get_userlist
 from task import Task
 
+INPUT_LOCATION_MESSAGE = "Введите место выполнения задачи или оставьте пустым: "
+INPUT_TIME_MESSAGE = "Введите время выполнения задачи (HH:MM-HH:MM) или оставьте пустым: "
+NOT_SPECIFIED = "Не указано"
 
 def main():
     while True:
@@ -52,13 +55,13 @@ def add_task(name):
 
         # Проверка корректности времени
         while True:
-            time = input("Введите время выполнения задачи (HH:MM-HH:MM) или оставьте пустым: ") or "Не указано"
+            time = input(INPUT_TIME_MESSAGE) or NOT_SPECIFIED
             task = Task(title, description, time=time)  # Создаём временный объект Task для проверки времени
             if task.is_valid_time(time):  # Проверяем корректность времени
                 break
             else:
                 print("Некорректный формат времени. Пожалуйста, введите время в формате HH:MM-HH:MM.")
-        location = input("Введите место выполнения задачи или оставьте пустым: ") or "Не указано"
+        location = input(INPUT_LOCATION_MESSAGE) or NOT_SPECIFIED
         task = Task(title, description, time=time, location=location)
         user.add_task(task)
     else:
@@ -107,7 +110,6 @@ def update_task(name):
     else:
         print("Пользователь не найден.")
 
-# Выполнить запрос по выбору пользователя
 def execute_user_choice(task, update_choice):
     if update_choice == "1":
         new_status = get_non_empty_input("Введите новый статус задачи: ")
@@ -116,19 +118,18 @@ def execute_user_choice(task, update_choice):
         new_description = get_non_empty_input("Введите новое описание задачи: ")
         task.update_description(new_description)
     elif update_choice == "3":
-        new_time = input("Введите время выполнения задачи (HH:MM-HH:MM) или оставьте пустым: ") or "Не указано"
+        new_time = input(INPUT_TIME_MESSAGE) or NOT_SPECIFIED
         task.update_time(new_time)
     elif update_choice == "4":
-        new_location = input("Введите место выполнения задачи или оставьте пустым: ") or "Не указано"
+        new_location = input(INPUT_LOCATION_MESSAGE) or NOT_SPECIFIED
         task.update_location(new_location)
     elif update_choice == "5":
         new_status = get_non_empty_input("Введите новый статус задачи: ")
         new_description = get_non_empty_input("Введите новое описание задачи: ")
         new_time = get_non_empty_input("Введите новое время выполнения задачи (HH:MM-HH:MM): ")
-        new_location = input("Введите место выполнения задачи или оставьте пустым: ") or "Не указано"
+        new_location = input(INPUT_LOCATION_MESSAGE) or NOT_SPECIFIED
         task.update_all(new_status, new_description, new_time, new_location)
 
-# Вывести список задач
 def show_brief_task_list(user):
     print("Список задач:")
     for i, task in enumerate(user.tasks, start=1):
