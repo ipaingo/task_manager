@@ -30,6 +30,7 @@ class Task:
         """
 
         self.status = status
+        print("Статус задачи обновлен.")
 
     def update_description(self, description):
         """
@@ -37,13 +38,20 @@ class Task:
         :param description: Новое описание.
         """
         self.description = description
+        print("Описание задачи обновлено.")
 
     def update_time(self, time):
         """
         Обновить время выполнения задачи.
         :param time: Новое время выполнения задачи (формат HH:MM-HH:MM).
         """
-        self.time = time
+        if self.is_valid_time(time):
+            self.time = time
+            print("Время выполнения задачи обновлено.")
+            return True
+        else:
+            print("Время выполнения задачи указано неверно.")
+            return False
 
     def update_location(self, location):
         """
@@ -51,6 +59,7 @@ class Task:
         :param location: Новое местоположение.
         """
         self.location = location
+        print("Местоположение задачи обновлено.")
 
     def update_all(self, status, description, time, location):
         """
@@ -60,10 +69,10 @@ class Task:
         :param time: Новое время выполнения.
         :param location: Новое местоположение.
         """
-        self.status = status
-        self.description = description
-        self.time = time
-        self.location = location
+        self.update_status(status)
+        self.update_description(description)
+        self.update_time(time)
+        self.update_location(location)
 
     def is_valid_time(self, time):
         """
@@ -94,7 +103,7 @@ class Task:
             return False
 
         # Проверить, что время является числовым значением
-        if not(start_hours.isdigit() and start_minutes.isdigit() and end_hours.isdigit() and end_minutes.isdigit()):
+        if not (start_hours.isdigit() and start_minutes.isdigit() and end_hours.isdigit() and end_minutes.isdigit()):
             return False
 
         start_hours = int(start_hours)
